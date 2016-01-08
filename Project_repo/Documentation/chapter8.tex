@@ -1,0 +1,60 @@
+
+\chapter{Infinite Mixture Models}
+The use of infinite mixture models, greatly improves the desirability of flat clustering
+in areas where hierarchical clustering is used if only because of the need to prespecify 
+the number of clusters. In many real life data set one can only make random guesses as to
+the number of clusters that are to exist. A data set may contain a skewed version of class
+distribution. Infinite models intelligently guess the cluster number on the basis of the 
+skew in distribution, which offer ample cues as to the non-homogeneity of the data.
+Parameter-free inference in such mixture models reduce the burden
+on the user by not requiring him/her to intelligently guess the parameters. The following infinite
+models were discussed in this thesis.
+\begin{itemize}
+\item Gibbs Sampling : Gibbs sampling is intuitive and completely probabilistic. Most 
+mixture models lend themselves well to conjugacy. This results in standard posterior distributions.
+In the rare event that the posterior distribution is non-standard, slice sampling resolves the issue.
+Gibbs sampling does not get caught in local minima unlike other deterministic algorithms. However,
+the burn in period can be prohibitively large, and each cycle of iteration takes significant CPU time.
+High dimensional data 
+\item Variational Inference : Independence assumption in distributions allow us to define a tractable
+approximate of the intractable model distribution. Also, the assumption of factorizeability results 
+in the elimination of intractable coupling. With such an assumption, we can define a whole new class
+of deterministic algorithms
+\item Dirichlet Process : The stick breaking process allows for an infinite number of classes. A base
+distribution $G$ and a concentration parameter $\alpha$ allow sampling  from 
+a distribution of distributions. 
+\end{itemize}
+
+\section{Verb Clustering}
+
+VALEX offers the 163 SCFs frequencies of 6,397 verbs in its lexicon. It offers a basic noisy lexicon
+which can be smoother (add-one or linear interpolation) to produce much better cluster results. Thresholds
+can be set to filter of those frequencies that do not meet it. Skewed distributions owing to the occurences
+of verbs can be made right by log normalizing the frequencies. Infinite mixture models cluster the verbs
+and predict the right number of verb classes in a given data set. Randomly chosen verb classes where used as
+input to the clustering algorithms. The resulting verb clusters were evaluated against Levin's verb clusters
+for purity and precision.
+
+\section{Metaphor Detection}
+Initializing with a seed set of metaphors that define the selectional preference of a verb to a noun and vice
+versa, we expand such a 1-1 mapping to a $*$-$*$ mapping between a verb  and noun clusters. This involves 
+no human supervision other than the initial seeding. The metaphors detected are evaluated agaisnt a wordnet
+baseline for coverage. 
+
+\section{Criticism}
+\subsection{Limitations}
+\begin{itemize}
+\item The VALEX data set uses only the SCF of verbs. It pays scant attention to the frequencies of 
+prepositional phrases as they are similiar in semantically related verbs. 
+\item The metaphor seed set is hand fed -- not extracted from a corpus. This is because the number of verbs and their
+ SCFs in VALEX crippligly is small. Any reasonable system that detects metaphors should have a wider verb coverage.
+\item Metaphors are evaluated only for coverage, not quality. Qualitative evaluation require human experts
+\end{itemize}
+
+\subsection{Extension}
+\begin{itemize}
+\item The four different metaphor view, vis-a-vis, comparison, selectional violation, interaction and conventional
+metaphor views can be taken into account to improve the quality of metaphors, though not necessarily their coverage.
+\item Introduce supervision to the assignmnent of outliers to their respective clusters. This may be done using VerbNet.
+\end{itemize}
+

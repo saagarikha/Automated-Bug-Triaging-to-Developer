@@ -1,0 +1,23 @@
+\contentsline {chapter}{ABSTRACT}{iii}{dummy.1}
+\contentsline {chapter}{LIST OF TABLES}{vi}{dummy.3}
+\contentsline {chapter}{LIST OF FIGURES}{vii}{dummy.5}
+\contentsline {chapter}{\numberline {1}Motivation}{1}{chapter.7}
+\contentsline {chapter}{\numberline {2}Design}{3}{chapter.8}
+\contentsline {section}{\numberline {2.1}Module Diagram}{3}{section.9}
+\contentsline {chapter}{\numberline {3}Literature Survey}{6}{chapter.12}
+\contentsline {chapter}{\numberline {4}Algorithms for Automatic Bug Triaging}{8}{chapter.13}
+\contentsline {section}{\numberline {4.1}Snowball Stemming Algorithm}{8}{section.14}
+\contentsline {section}{\numberline {4.2}Naive Bayes Text Classifier Algorithm}{9}{section.17}
+\contentsline {section}{\numberline {4.3}Multinomial Naive Bayes Algorithm}{11}{section.20}
+\contentsline {section}{\numberline {4.4}Tf- idf Weight Calculation}{13}{section.26}
+\contentsline {section}{\numberline {4.5}Linear Support Vector Machine}{14}{section.27}
+\contentsline {section}{\numberline {4.6}Folding}{14}{section.28}
+\contentsline {section}{\numberline {4.7}Goal oriented tossing graph}{17}{section.30}
+\contentsline {section}{\numberline {4.8}Prediction Accuracy}{19}{section.32}
+\contentsline {chapter}{\numberline {5}Problem Definition and Proposed System}{20}{chapter.33}
+\contentsline {section}{\numberline {5.1}Problem Statement}{20}{section.34}
+\contentsline {section}{\numberline {5.2}Data Set}{21}{section.35}
+\contentsline {section}{\numberline {5.3}Sample Data set}{22}{section.36}
+\contentsline {chapter}{\numberline {6}Conclusion and Future Work}{26}{chapter.79}
+\contentsline {chapter}{\numberline {7}Result}{28}{chapter.80}
+\contentsline {section}{\numberline {7.1}Experimental Set-up}{28}{section.81}

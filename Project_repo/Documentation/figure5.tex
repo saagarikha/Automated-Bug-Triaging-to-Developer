@@ -1,0 +1,36 @@
+\begin{tikzpicture}
+
+
+
+	\node 	(e0)		at	(-1,0) 	[circle, thick]{};
+
+	\node 	(e1)		at	(0,0) 	[circle, thick, draw=blue!50,fill=green!20,inner sep=0pt,minimum size=.75cm]{$q_0$};
+
+	\node 	(e2)		at	(2,0) 	[circle, thick, draw=blue!50,fill=green!20,inner sep=0pt,minimum size=.75cm]{$q_1$};
+
+
+	\node 	(e3)		at	(4,0) 	[circle, thick, draw=blue!50,fill=green!20,inner sep=0pt,minimum size=.75cm]{$q_2$};
+
+
+
+	\node 	(e4)		at	(6,0) 	[circle, thick, draw=blue!50,fill=red!20,inner sep=0pt,minimum size=.75cm]{$q_3$};
+
+
+%	\node 	(e5)		at	(3,-4) 	[circle, thick, draw=blue!50,fill=green!20,inner sep=0pt,minimum size=.75cm]{$5$};
+
+%	\node 	(e6)		at	(3,-3) 	[circle, thick, draw=blue!50,fill=green!20,inner sep=0pt,minimum size=.75cm]{$4,6$};
+
+	\draw[->, thick]	(e0)	to	node[auto]{}	(e1);
+	\draw[->, thick]	(e1)	to	node[auto]{$1$}	(e2);
+	\draw[->, thick]	(e2)	to	node[auto]{$0,1$}	(e3);
+	\draw[->, thick]	(e3)	to	node[auto]{$0,1$}	(e4);
+
+%	\draw[->, thick,bend right=40]	(e3)	to	node[auto,swap]{$0$}	(e2);
+	\draw[->, thick,loop above]	(e1)	to	node[auto]{$0,1$}	(e1);
+%	\draw[->, thick,loop above]	(e2)	to	node[auto]{$0$}	(e2);
+
+%	\draw[->, thick,bend right=30]	(e5)	to	node[auto,swap]{$b$}	(e2);
+
+
+\end{tikzpicture}
+

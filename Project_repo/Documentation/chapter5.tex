@@ -1,0 +1,137 @@
+% Chapter 4
+
+\chapter{Problem Definition and Proposed System} % Write in your own chapter title
+
+
+\section{Problem Statement}
+\emph{Input}: A bug report in natural language text submitted by the reporter briefing the problem.\linebreak
+\emph{Output}: The component in which the bug may potentially be, and the developer or list of developers to whom it can be assigned to.
+
+When the user finds a bug, he/she reports the bug through a bug tracker used by the Software. Since the description of the bug submitted by the user is a natural language text, Natural Language Processing is used to extract useful keywords from the bug report that would provide information about the bug that the user has encountered. The processing involves stop-word removal and stemming to extract useful keywords from the description of the bug report. These extracted keywords are used to identify the most probable defective component based on the dependencies that are previously learnt. Then based on the defective Component and Tossing History of the developers, a list of Developers will be informed of this bug to solve.
+
+The list of Developers should be chosen in such a way that the probability of the bug getting reassigned must be minimum. After fixing the bug, the bug report is annotated/labelled with the developer and the component related to the bug. A dependency structure is formed over time for supervised learning from the fixed bugs.
+
+\section{Data Set}
+Dataset is a collection of fixed bug reports gathered from a open
+source software bug tracker tool containing necessary information
+about the components, developers and re-assignments. This is a
+categorized, classified, and semi-structured data. A bug report, generally a
+natural language text, submitted by the user is stored in the XML
+format by the bug tracker tool. Information contained in the dataset:
+\begin{itemize}
+\item \emph{severity}: The severity denotes how soon the bug should be fixed.
+\item \emph{product}: The particular software application the bug is related to.
+\item \emph{component}: The relevant subsystem of the product for the reported bug.
+\item \emph{assigned to}: The identifier of the developer to whom the bug was assigned to.
+\item \emph{short desc}: Contains a natural language text embedded by the user.
+\item \emph{bug status}: The status of the bug at every update. NEW, ASSIGNED, RESOLVED, VERIFIED, REOPENED.
+\item \emph{resolution}: Tagging the bug report for maintenance. FIXED, REMIND, INVALID, WORKSFORME.
+\end{itemize}
+With these information the dependencies between the components, developers, and reassignment can be formed.
+
+\section{Sample Data set}
+
+\begin{verbatim}
+<report id="122442">
+	<update>
+    	<when>1136131494</when>
+      	<what>jdt-core-inbox@eclipse.org</what>
+    </update>
+    <update>
+      	<when>1136182552</when>
+      	<what>frederic_fusier@fr.ibm.com</what>
+	</update>
+</report>
+\end{verbatim}
+A sample report in \texttt{assignedto.xml} data set.  It specifies
+the developer to whom it was assigned to at every update along with the time of each update.
+
+\begin{verbatim}
+<report id="122442">
+    <update>
+     	<when>1136131494</when>
+      	<what>API inconsistency with IJavaSearchConstants.IMPLEMENTORS and SearchPattern</what>
+    </update>
+    <update>
+      	<when>1136182552</when>
+      	<what>[search] API inconsistency with IJavaSearchConstants.IMPLEMENTORS and SearchPattern</what>
+	</update>
+</report>
+\end{verbatim}
+The short description of the bug report submitted by the reporter.
+
+\begin{verbatim}
+<report id="122442">
+    <update>
+      <when>1136246754</when>
+      <what>Core</what>
+    </update>
+    <update>
+      <when>1136276291</when>
+      <what>UI</what>
+    </update>
+  </report>
+\end{verbatim}
+Gives information about the component involved at every update.
+The bug is trivially tracked using its report-id.
+\newline
+\lstset{language=XML}
+\begin{lstlisting}
+<xsl:choose>					
+	<xsl:when test="document('short_desc.xml')//short_desc/
+report[@id=$w]/update[when=$x]/what!=''">
+		<xsl:text>     </xsl:text>					
+		<xsl:value-of select="concat('what=',document
+('short_desc.xml')//short_desc/report[@id=$w]/update[when=$x]
+/what,'&#10;')">
+		</xsl:value-of>
+	</xsl:when>
+</xsl:choose>
+\end{lstlisting}
+
+First the dataset in XML format is what we used but it has only around 10000 reports. To obtain higher efficiency, we used dataset which is in JSON format it has around 1,60,000 reports in a well structured manner.
+Training data set in JSON format compares the report-id and the update("when") of each report-id in the respective files and merges the "what" content present in short$\_$desc(to get the bug report) component(to obtain the component) and assigned$\_$to(the developer) to a single text file. This text file is pre-processed. The pre-processed file is converted to a feature-vector pair where the feature is the bug-report and the component it is present and the vector being the developer. The classifier learns from this feature-vector pair and predicts the accurate developer for incoming bug reports. Another feature-vector pair (component and developer) learned by the classifier is used for tossing graphs. The probability of developer solving the bug in particular component and his tossing to another developer are combined and the next probable developer who can fix the bug is determined.
+
+\lstdefinelanguage{json}
+{
+	morestring=[b]",
+	morestring=[d]'
+}
+\begin{lstlisting}[language=json,firstnumber=1]
+{"assigned_to" : "123456": [{"who":86,
+							  "what": Platform-UI-Inbox@eclipse.org, //developer/
+							  "when":1023451345}, {"who":18,
+							  "what": jhalhead@ca.ibm.com,
+							  "when":10234513232} ],
+				 "124323": [{"who":44,
+							  "what": pde-ui-inbox@eclipse.org, 
+							  "when":101234245467}, {"who":11,
+							  "what": Darin_Wright@oti.com,
+							  "when":102345112342} ] }			  
+{"short_desc" : "123456": [{"who":86,
+							  "what": Proxy Dialog when invoking Content Assist , //Short Description/
+							  "when":1023451345}, {"who":18,
+							  "what": Allow editing of non-project files,
+							  "when":10234513232} ],
+				 "124323": [{"who":44,
+							  "what": content assist displays accessors, 
+							  "when":101234245467}, {"who":11,
+							  "what": No refresh in package view when switching internal JAR,
+							  "when":102345112342} ] }
+{"component" : "123456": [{"who":86,
+							  "what": Core, //Component/
+							  "when":1023451345}, {"who":18,
+							  "what": Text,
+							  "when":10234513232} ],
+				 "124323": [{"who":44,
+							  "what": Text, 
+							  "when":101234245467}, {"who":11,
+							  "what": UI,
+							  "when":102345112342} ] }							  
+\end{lstlisting}
+After parsing, the output text file contains data in the following format:
+\begin{verbatim}
+JDT, Type hierarchy returns type twice if executed on working copy layer, Core
+JDT, Context Menu suggests I ca run applets that doesn't exists, Debug
+JDT, Identation broken when copying lines, Text
+\end{verbatim}

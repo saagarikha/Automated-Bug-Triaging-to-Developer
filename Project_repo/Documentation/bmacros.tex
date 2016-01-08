@@ -1,0 +1,150 @@
+% Some new environments for the paper
+%
+\newtheorem{dfn}{Definition}[section]
+\newtheorem{prop}[dfn]{Proposition}
+\newtheorem{lem}[dfn]{Lemma}
+\newtheorem{thm}[dfn]{Theorem}
+\newtheorem{cor}[dfn]{Corollary}
+\newtheorem{clm}[dfn]{Claim}
+\newtheorem{fact}[dfn]{Fact}
+%
+%\newcommand{\RightBox}{\begin{flushright} $\Box$ \end{flushright}}
+\newcommand{\RightBox}{{\phantom{a}}\hfill $\Box$ \\}
+%\newenvironment{proof}{{\bf Proof:~}}{\RightBox}
+\newenvironment{prf}{{\bf Proof~Idea:~}}{\RightBox}
+%\newcommand{\claim}[1]{{\bf Claim #1:~}}
+%
+\newcommand{\Dfn}[1]{Definition \ref{dfn:#1}}
+\newcommand{\Prop}[1]{Proposition \ref{prop:#1}}
+\newcommand{\Lem}[1]{Lemma \ref{lem:#1}}
+\newcommand{\Thm}[1]{Theorem \ref{thm:#1}}
+\newcommand{\Cor}[1]{Corollary \ref{cor:#1}}
+
+%Action-indexed diamond modality
+\newcommand{\Adiam}[1]{\mbox{$\langle #1 \rangle$}}
+\newcommand{\diamin}{\Diamond\kern-0.5em{\raisebox{.25ex}{\rm -}}\kern0.175em}
+\newcommand{\until}{\mbox{\large\bf U}}
+\newcommand{\since}{\mbox{\large\bf S}}
+\newcommand{\nxt}{\mbox{$\bigcirc$}}
+\newcommand{\nxtdot}{\displaystyle \bigodot}
+\newcommand{\past}{\diamin}
+\newcommand{\ifpast}{\mbox{$\boxminus$}}
+\newcommand{\now}{\mbox{$\langle now \rangle$}}
+\newcommand{\Now}{\mbox{$[now]$}}
+\newcommand{\pres}{\mbox{$\rangle \langle$}}
+\newcommand{\snd}{\mbox{\large\bf s}}
+\newcommand{\rec}{\mbox{\large\bf r}}
+\newcommand{\nc}{\mathbf{no\_comm}}
+
+%Propositional connectives
+%\newcommand{\implies}{{\raisebox{.20ex}{$\scriptstyle ~\supset~$}}}
+\newcommand{\Not}{\mbox{$\lnot$}}
+\newcommand{\xor}{\oplus}
+\newcommand{\True}{\mathit{True}}
+\newcommand{\False}{\mathit{False}}
+\newcommand{\Imply}{\supset}
+%Large symbols
+\newcommand{\andover}{\displaystyle \bigwedge}
+\newcommand{\orover}{\displaystyle \bigvee}
+\newcommand{\capover}{\displaystyle \bigcap}
+\newcommand{\cupover}{\displaystyle \bigcup}
+\newcommand{\piover}{\displaystyle \Pi}
+\newcommand{\ohat}[1]{\widehat{#1}}
+\newcommand{\otilde}[1]{\widetilde{#1}}
+\newcommand{\obar}[1]{\overline{#1}}
+\newcommand{\Sigtil}{\mbox{$\otilde{\Sigma}$}}
+\newcommand{\DA}{\mbox{$\Sigtil~=~(\Sigma_1, \dots, \Sigma_n)$}}
+
+%Useful symbols
+\newcommand{\derives}{\vdash}
+\newcommand{\defn}{\mbox{$~\stackrel{\rm def}{=}~$}}
+\newcommand{\qneq}{\mbox{$~\stackrel{\rm ?}{=}~$}}
+\newcommand{\eqv}{\approx}
+\newcommand{\hash}{\sharp}
+\newcommand{\restr}{\lceil}
+%\newcommand{\bot}{\bottom}
+\newcommand{\nat}{{\bf N}}
+\newcommand{\pfin}[1]{\mbox{$\wp_{fin}(#1)$}}
+%\newcommand{\mod}[1]{\mbox{$|#1|$}}
+\newcommand{\memb}[2]{\mbox{${#1} \in {#2}$}}
+\newcommand{\E}{\mathbf{E}}
+
+
+
+%Some roman words in math mode
+\newcommand{\Iff}{\mbox{~iff~}}
+%\newcommand{\For}{\mbox{~for~}}
+\newcommand{\Where}{\mbox{~where~}}
+%\newcommand{\And}{\mbox{~and~}}
+\newcommand{\Implies}{\mbox{~implies~}}
+
+%Relations
+
+% structures
+\newcommand{\Sigstr}{\mbox{$\Sigma^*$}}
+\newcommand{\TS}{\mbox{$TS = (Q,\to)$}}  %generates TS=(Q,->)
+\newcommand{\TSP}{\mbox{$TS = (Q,\To)$}}         %generates TS=(Q,=>)
+\newcommand{\TSi}{\mbox{$TS_i = (Q_i,\to_i)$}}           
+\newcommand{\TSE}{\mbox{$TS_{ES}$}}
+\newcommand{\TSN}{\mbox{$TS_{\cal N}$}}
+\newcommand{\ES}{\mbox{$ES = (E,\leq,\#)$}}       %generates ES=(E,<=,#)
+\newcommand{\LES}{\mbox{$ES = (E,\leq,\#,\phi)$}} %generates ES=(E,<=,#,phi)
+\newcommand{\Tmdl}{\mbox{$M = (TS,V)$}}          %generates M = (TS,V)
+\newcommand{\cfin}[1]{\mbox{$C_{#1}$}}           %finite configurations of
+\newcommand{\fincon}[1]{\mbox{$C_{#1}^{fin}$}}  %finite configurations
+
+% classes
+\newcommand{\mdl}[1]{\mbox{${\cal M}_{#1}$}}%generates script M with subscript
+\newcommand{\dmodels}{\mbox{$\models_{Det}~$}}
+
+% For transitions steps
+\newcommand{\step}[1]{\mbox{$\stackrel{#1}{\to}$}}
+\newcommand{\Funnyto}{\rightsquigarrow}
+\newcommand{\longstep}[1]{\mbox{$\stackrel{#1}{\longrightarrow}$}}
+\newcommand{\emptystep}{\step{\emptyset}}
+\newcommand{\reach}[1]{\mbox{${\cal R}(#1)$}}
+\newcommand{\reachin}[2]{\mbox{${\cal R}_{#1}(#2)$}}
+
+% For a "double-lined" transition relation
+\newcommand{\To}{\Rightarrow}
+\newcommand{\From}{\Leftarrow}
+\newcommand{\Step}[1]{\mbox{$\stackrel{#1}{\To}$}}
+\newcommand{\Longstep}[1]{\mbox{$\stackrel{#1}{\Longrightarrow}$}}
+\newcommand{\Longlongstep}[1]{\mbox{$\stackrel{#1}{\Longlongrightarrow}$}}
+\newcommand{\Emptystep}{\Step{\emptyset}}
+
+% Net theory
+\newcommand{\presca}[1]{\mbox{${ }^{\bullet}#1$}}
+\newcommand{\postsca}[1]{\mbox{$#1 \, { }^{\bullet}$}}%
+
+%The built in downarrow generates too much space after it
+%\newcommand{\down}{\mbox{$\downarrow \!$}}
+\newcommand{\down}{\mbox{$\downarrow$}}
+\newcommand{\up}{\mbox{$\uparrow \!$}}
+\newcommand{\ldot}{{\rm <}\kern-0.37em{\raisebox{.25ex}{\bf .}}\kern0.375em}
+
+%Trace theory
+\newcommand{\edoti}{\mbox{$\doteq_I$}}
+\newcommand{\eqi}{\mbox{$=_I$}}
+\newcommand{\edotk}{\mbox{$\doteq_k$}}
+\newcommand{\eqk}{\mbox{$=_k$}}
+
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\posetlang}[1]{\mbox{${\calL}^{po}(#1)$}}%poset language of an SCA
+\newcommand{\bddlang}[2]{\mbox{${{\calL}^{#1}}(#2)$}} %bounded buffer language
+
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calG}{\mathcal{G}}
+
+
+
+\newcommand{\calQ}{\mathcal{Q}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calCN}{\mathcal{CN}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calM}{\mathcal{M}}

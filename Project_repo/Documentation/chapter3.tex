@@ -1,0 +1,29 @@
+% Chapter 2
+
+\chapter{Literature Survey} % Write in your own chapter title
+
+Cubranic et al. [1] were the first to propose the idea of using text classification methods (similar to methods used in machine learning) to semi-automate
+the process of bug assignment. They used keywords extracted from the title
+and description of the bug report, as well as developer ID’s as attributes, and
+trained a Naive Bayes classifier. When presented with new bug reports, the
+classifier suggests one or more potential developers for fixing the bug. Their
+method used bug reports for Eclipse for training, and reported a prediction accuracy of up to 30\%. While we use classification as a part of our approach, in addition, we employ incremental learning and tossing graphs to reach higher accuracy.
+
+Anvik et al. [2] improved the machine learning approach proposed by Cubranic et al. by using filters when collecting training data: (1) filtering out bug reports
+labeled “invalid,” “wontfix,” or “worksforme,” (2) removing developers who no longer work on the project or do not contribute significantly, and (3) filtering developers who fixed less than 9 bugs. They used three classifiers, SVM, Naive Bayes and C4.5. They observed that SVM (Support Vector Machines) performs better than the other two classifiers and reported prediction accuracy of up to 64%.
+
+Lin et al. [3] conducted machine learning-based bug assignment on a proprietary project, SoftPM. Their experiments were based on 2,576 bug reports. They report 77.64\% average prediction accuracy when considering module ID (the module a bug belongs to) as an attribute for training the classifier; the accuracy drops to 63\% when module ID is not used. Their finding is similar to our observation that using product-component information for classifier training improves prediction accuracy.
+
+Jeong et al. [4] introduced the idea of using bug tossing graphs to predict
+a set of suitable developers for fixing a bug. They used classifiers and tossing
+graphs (Markov-model based) to recommend potential developers.
+
+Pamela bhattacharya et al.[5] proposed a technique for automated bug assignment using machine learning and tossing graphs. They used a classifier and a tossing graph to automatically assign a bug to a developer. Initially, they used a training data set of fixed bugs that contains information regarding the developers to whom it was assigned and the reassignment to other developers.
+
+
+
+ 
+
+
+
+

@@ -1,0 +1,22 @@
+% Chapter 5
+
+\chapter{Conclusion and Future Work} % Write in your own chapter title
+Machine learning and tossing graphs have proved to be promising for automating bug assignment. In this paper we lay the foundation for future work
+that uses machine learning techniques to improve automatic bug assignment
+by examining the impact of multiple machine learning dimensions—learning
+strategy, attributes, classifiers—on assignment accuracy.
+\begin{itemize}
+\item We used a broad range of text classifiers and found that, like many problems which use specific machine learning algorithms, we could able to select a specific classifier for the bug assignment problem.
+
+\item We validated our approach on two large, long-lived open-source projects; in the future, we plan to test how our current model generalizes to projects of
+different scale and lifespan. In particular we would like to find if the classifier preference should change as the project evolves and how source code familiarity of a developer could be used as an additional attribute for ranking developers.
+
+\item Similarly, when we assign tossing probabilities, we only consider the developer who could finally fix the bug. However, it is common that developers contribute
+partially to the final patch in various ways. For example, when a bug is assigned
+to a developer, he might provide insights and add notes to the bug report instead of actually fixing the bug; in fact, there are contributors who provide
+useful discussions about a bug in the comment sections of a bug report who
+are never associated with the fixing process directly. These contributions are
+not considered in our ranking process,
+
+	%Tossing graphs are weighted directed graphs such that each node represents a developer, and each directed edge from D1 to D2 represents the fact that bug assigned to developer D1 was tossed and eventually fixed by developer D2. The weight of the edge between two developers is the probability of the toss between them, based on bug tossing history.%
+\end{itemize}
